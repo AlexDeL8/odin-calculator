@@ -19,5 +19,12 @@ function addButtonListeners() {
 function inputNumberToDisplay(numberToDisplay) {
     //checks for decimal input and that only ONE decimal is allowed
     //TODO HERE
+    if(numberToDisplay === '.') {
+        if(displayInputElement.innerText.includes('.')) {
+            return;
+        } else if(displayInputElement.innerText === '') {
+            displayInputElement.innerText += '0'
+        }
+    }
     displayInputElement.innerText += numberToDisplay;
 }
