@@ -28,9 +28,8 @@
     border: 3px solid green;
     border-radius: 8px 8px 20px 20px;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 20px;
 }
 
 #display {
@@ -55,13 +54,26 @@
 .button-row {
     display: flex;
     flex-direction: row;
-    gap: 20px
+    gap: 30px;
 }
 
 .button {
-    width: 75px;
+    width: 90px;
     height: 75px;
-    background-color: rgb(225, 245, 225);;
+    background-color: rgb(225, 245, 225);
     border: 3px solid black;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: rgb(180, 200, 180);
+}
+
+.button:active {
+    background-color: rgb(135, 155, 135);
 }
 
