@@ -9,7 +9,6 @@ function addButtonListeners() {
     let calculatorButtons = Array.from(document.getElementsByClassName('button'));
 
     for(let button of calculatorButtons) {
-        console.log(button);
         if(button.classList.contains('number')) {
             button.addEventListener('click', (e) => inputNumberToDisplay(e.target.getAttribute('value')))
         }
@@ -18,12 +17,15 @@ function addButtonListeners() {
 
 function inputNumberToDisplay(numberToDisplay) {
     //checks for decimal input and that only ONE decimal is allowed
-    //TODO HERE
-    if(numberToDisplay === '.') {
-        if(displayInputElement.innerText.includes('.')) {
+    if(numberToDisplay === '.' && displayInputElement.innerText.includes('.')) {
+        return;
+    }
+    if(displayInputElement.innerText === '0') {
+        if(numberToDisplay === '0') {
             return;
-        } else if(displayInputElement.innerText === '') {
-            displayInputElement.innerText += '0'
+        } else {
+            numberToDisplay === '.' ? displayInputElement.innerText += numberToDisplay : displayInputElement.innerText = numberToDisplay;
+            return;
         }
     }
     displayInputElement.innerText += numberToDisplay;
