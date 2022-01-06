@@ -30,6 +30,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    text-align: right;
 }
 
 #display {
@@ -49,6 +50,7 @@
 
 #display-input {
     height: 70%;
+    font-size: 64px;
 }
 
 .button-row {

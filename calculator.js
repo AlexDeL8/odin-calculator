@@ -34,10 +34,10 @@ function factorial(num) {
   }
 };
 
-module.exports = {
+export default {
     add,
     subtract,
     multiply,
     power,
     factorial
-  };
+};
