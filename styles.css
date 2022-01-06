@@ -30,6 +30,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    text-align: right;
 }
 
 #display {
@@ -49,12 +50,37 @@
 
 #display-input {
     height: 70%;
+    font-size: 64px;
 }
 
 .button-row {
     display: flex;
     flex-direction: row;
     gap: 30px;
+}
+
+#clear {
+    background-color: rgb(255, 80, 0);
+}
+
+#clear:hover {
+    background-color: rgb(175, 55, 0);
+}
+
+#clear:active {
+    background-color: rgb(160, 50, 0);
+}
+
+#delete {
+    background-color: rgb(255, 195, 0);
+}
+
+#delete:hover {
+    background-color: rgb(215, 165, 0);
+}
+
+#delete:active {
+    background-color: rgb(175, 135, 0);
 }
 
 .button {
@@ -77,3 +103,6 @@
     background-color: rgb(135, 155, 135);
 }
 
+.action {
+    background-color: rgb(140, 195, 210);
+}
