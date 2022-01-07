@@ -43,14 +43,14 @@
     flex-direction: column;
 }
 
-#preview {
+#display-preview {
     height: 30%;
     border-bottom: 3px dotted black;
 }
 
 #display-input {
     height: 70%;
-    font-size: 64px;
+    font-size: 80px;
 }
 
 .button-row {
@@ -88,6 +88,7 @@
     height: 75px;
     background-color: rgb(225, 245, 225);
     border: 3px solid black;
+    border-radius: 5px;
     font-size: 30px;
     display: flex;
     justify-content: center;
@@ -103,6 +104,6 @@
     background-color: rgb(135, 155, 135);
 }
 
-.action {
+.operation {
     background-color: rgb(140, 195, 210);
 }
