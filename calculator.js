@@ -1,43 +1,43 @@
 'use strict'
 
-function add(a, b) {
-	return a + b;
-};
-
-function subtract(a, b) {
-	return a - b;
-};
-
-function multiply(a, b) {
-  return a * b;
-};
-
-function power(base, exponent) {
-  let final = base;
-  while(exponent > 1) {
-    final *= base;
-    exponent--;
+class Calculator {
+  constructor() {
+    
   }
-  return final;
-};
 
-function factorial(num) {
-  if(num === 0 || num === 1) {
-    return 1;
-  } else {
+  add(a, b) {
+    return a + b;
+  };
+
+  subtract(a, b) {
+    return a - b;
+  };
+
+  multiply(a, b) {
+    return a * b;
+  };
+
+  power(base, exponent) {
+    if(exponent === 0) return 1;
+    
+    let final = base;
+    while(exponent > 1) {
+      final *= base;
+      exponent--;
+    }
+    return final;
+  };
+
+  factorial(num) {
+    if(num === 0 || num === 1) return 1;
+    
     let sum = 1;
     while(num > 0) {
       sum *= num;
       num--;
     }
     return sum;
-  }
-};
+  };
+}
 
-export default {
-    add,
-    subtract,
-    multiply,
-    power,
-    factorial
-};
+module.exports = Calculator;
