@@ -46,11 +46,13 @@
 #display-preview {
     height: 30%;
     font-size: 24px;
+    padding-right: 5px;
     border-bottom: 3px dotted black;
 }
 
 #display-input {
     height: 70%;
+    padding-right: 5px;
     font-size: 80px;
 }
 
