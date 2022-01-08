@@ -14,7 +14,13 @@ function addButtonListeners() {
         if(button.classList.contains('number')) {
             button.addEventListener('click', (e) => updateInputDisplay(e.target.getAttribute('value')));
         } else if(button.classList.contains('operation')) {
-            button.addEventListener('click', (e) => console.log('operation'));
+            button.addEventListener('click', (e) => {
+                if(e.target.getAttribute('id') === 'equals') {
+                    operate(`${displayPreview.innerText} ${displayInputElement.innerText}`);
+                } else {
+                    updatePreviewDisplay(displayInputElement.innerText, e.target.getAttribute('value'));
+                }
+            });
         } else if(button.classList.contains('action')) {
             button.addEventListener('click', (e) => console.log('action'));
         }
@@ -38,9 +44,33 @@ function updateInputDisplay(numberToDisplay) {
 }
 
 function updatePreviewDisplay(num1, operation) {
-
+    displayPreview.innerText = `${num1} ${operation}`;
+    displayInputElement.innerText = 0;
 }
 
-function operate(num1, num2, operation) {
-
+function operate(operationString) {
+    console.log(operationString);
+    let operation = '';
+    switch(operation) {
+        case "plus":
+            console.log(`Number: ${num1} - Operation: ${operation}`);
+            break;
+        case "minus":
+            console.log(`Number: ${num1} - Operation: ${operation}`);
+            break;
+        case "multiply":
+            console.log(`Number: ${num1} - Operation: ${operation}`);
+            break;
+        case "divide":
+            console.log(`Number: ${num1} - Operation: ${operation}`);
+            break;
+        case "power":
+            console.log(`Number: ${num1} - Operation: ${operation}`);
+            break;
+        case "factorial":
+            console.log(`Number: ${num1} - Operation: ${operation}`);
+            break;
+        default:
+            console.log("ERROR");
+    }
 }
