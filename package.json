@@ -1,0 +1,22 @@
+{
+  "name": "odin-calculator",
+  "version": "1.0.0",
+  "description": "This is the Odin Calculator project to practice what was learned in the JS Foundations section of the Foundations portion in [The Odin Project](https://www.theodinproject.com/dashboard)",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexDeL8/odin-calculator.git"
+  },
+  "author": "Alex De Luca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexDeL8/odin-calculator/issues"
+  },
+  "homepage": "https://github.com/AlexDeL8/odin-calculator#readme",
+  "devDependencies": {
+    "jest": "^27.4.7"
+  }
+}
