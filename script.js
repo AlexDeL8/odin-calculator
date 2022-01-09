@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', addButtonListeners());
 
 let displayInputElement = document.getElementById('display-input');
-let displayPreview = document.getElementById('display-preview');
+let displayPreviewElement = document.getElementById('display-preview');
 
 function addButtonListeners() {
     let calculatorButtons = Array.from(document.getElementsByClassName('button'));
@@ -12,15 +12,18 @@ function addButtonListeners() {
         if(button.classList.contains('number')) {
             button.addEventListener('click', (e) => updateInputDisplay(e.target.getAttribute('value')));
         } else if(button.classList.contains('operation')) {
-            button.addEventListener('click', (e) => {
-                if(e.target.getAttribute('id') === 'equals') {
-                    operate(`${displayPreview.innerText} ${displayInputElement.innerText}`);
-                } else {
-                    updatePreviewDisplay(`${displayInputElement.innerText} ${e.target.getAttribute('value')}`);
-                }
-            });
+            if(button.getAttribute('id') === 'equals') {
+                button.addEventListener('click', (e) => operate(`${displayPreviewElement.innerText} ${displayInputElement.innerText}`))
+            } else {
+                button.addEventListener('click', (e) => updatePreviewDisplay(`${displayInputElement.innerText} ${e.target.getAttribute('value')}`))
+            }
         } else if(button.classList.contains('action')) {
-            button.addEventListener('click', (e) => console.log('action'));
+            if(button.getAttribute('id') === 'clear') {
+                button.addEventListener('click', (e) => clearDisplay());
+            }
+            else {
+                console.log('delete');
+            }
         }
     }
 }
@@ -42,13 +45,18 @@ function updateInputDisplay(numberToDisplay) {
 }
 
 function updatePreviewDisplay(operationString) {
-    displayPreview.innerText = operationString;
+    displayPreviewElement.innerText = operationString;
     displayInputElement.innerText = 0;
+}
+
+function clearDisplay() {
+    displayInputElement.innerText = 0;
+    displayPreviewElement.innerText = '';
 }
 
 function operate(operationString) {
     console.log(operationString);
-    displayPreview.innerText = operationString;
+    displayPreviewElement.innerText = operationString;
     
     let operationArray = operationString.split(' ');
     let num1 = Number.parseInt(operationArray[0]);
