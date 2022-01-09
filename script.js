@@ -54,6 +54,10 @@ function clearDisplay() {
     displayPreviewElement.innerText = '';
 }
 
+function deleteFromDisplay() {
+    return true;
+}
+
 function operate(operationString) {
     console.log(operationString);
     displayPreviewElement.innerText = operationString;
