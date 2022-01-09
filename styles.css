@@ -22,7 +22,7 @@
 
 #calculator-body {
     width: 600px;
-    height: 750px;
+    height: 650px;
     display: flex;
     background-color: rgb(175, 245, 175);
     border: 3px solid green;
