@@ -65,13 +65,14 @@ function operate(operationString) {
             displayInputElement.innerText = multiply(num1, num2);
             break;
         case "/":
-            displayInputElement.innerText = div(num1, num2);
+            displayInputElement.innerText = divide(num1, num2);
             break;
         case "^":
-            displayInputElement.innerText = add(num1, num2);
+            displayInputElement.innerText = power(num1, num2);
             break;
         case "!":
-            displayInputElement.innerText = add(num1, num2);
+            console.table(operationArray)
+            // displayInputElement.innerText = factorial(num1); some special code needs to work so ! only needs 1 number
             break;
         default:
             console.log("Invalid operation");
