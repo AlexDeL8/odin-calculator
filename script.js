@@ -1,7 +1,5 @@
 'use strict'
 
-// import {calculator} from './calculator.js'
-
 document.addEventListener('DOMContentLoaded', addButtonListeners());
 
 let displayInputElement = document.getElementById('display-input');
@@ -18,7 +16,7 @@ function addButtonListeners() {
                 if(e.target.getAttribute('id') === 'equals') {
                     operate(`${displayPreview.innerText} ${displayInputElement.innerText}`);
                 } else {
-                    updatePreviewDisplay(displayInputElement.innerText, e.target.getAttribute('value'));
+                    updatePreviewDisplay(`${displayInputElement.innerText} ${e.target.getAttribute('value')}`);
                 }
             });
         } else if(button.classList.contains('action')) {
@@ -43,34 +41,78 @@ function updateInputDisplay(numberToDisplay) {
     displayInputElement.innerText += numberToDisplay;
 }
 
-function updatePreviewDisplay(num1, operation) {
-    displayPreview.innerText = `${num1} ${operation}`;
+function updatePreviewDisplay(operationString) {
+    displayPreview.innerText = operationString;
     displayInputElement.innerText = 0;
 }
 
 function operate(operationString) {
     console.log(operationString);
-    let operation = '';
+    displayPreview.innerText = operationString;
+    
+    let operationArray = operationString.split(' ');
+    let num1 = Number.parseInt(operationArray[0]);
+    let operation = operationArray[1];
+    let num2 = Number.parseInt(operationArray[2]);
     switch(operation) {
-        case "plus":
-            console.log(`Number: ${num1} - Operation: ${operation}`);
+        case "+":
+            displayInputElement.innerText = add(num1, num2);
             break;
-        case "minus":
-            console.log(`Number: ${num1} - Operation: ${operation}`);
+        case "-":
+            displayInputElement.innerText = subtract(num1, num2);
             break;
-        case "multiply":
-            console.log(`Number: ${num1} - Operation: ${operation}`);
+        case "*":
+            displayInputElement.innerText = multiply(num1, num2);
             break;
-        case "divide":
-            console.log(`Number: ${num1} - Operation: ${operation}`);
+        case "/":
+            displayInputElement.innerText = div(num1, num2);
             break;
-        case "power":
-            console.log(`Number: ${num1} - Operation: ${operation}`);
+        case "^":
+            displayInputElement.innerText = add(num1, num2);
             break;
-        case "factorial":
-            console.log(`Number: ${num1} - Operation: ${operation}`);
+        case "!":
+            displayInputElement.innerText = add(num1, num2);
             break;
         default:
-            console.log("ERROR");
+            console.log("Invalid operation");
     }
 }
+
+/* Math functions */
+function add(a, b) {
+    return a + b;
+};
+
+function subtract(a, b) {
+    return a - b;
+};
+
+function multiply(a, b) {
+    return a * b;
+};
+
+function divide(a, b) {
+    return a / b;
+};
+
+function power(base, exponent) {
+    if(exponent === 0) return 1;
+
+    let final = base;
+    while(exponent > 1) {
+        final *= base;
+        exponent--;
+    }
+    return final;
+    };
+
+function factorial(num) {
+    if(num === 0 || num === 1) return 1;
+
+    let sum = 1;
+    while(num > 0) {
+        sum *= num;
+        num--;
+    }
+    return sum;
+};
