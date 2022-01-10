@@ -15,7 +15,7 @@ function addButtonListeners() {
             if(button.getAttribute('id') === 'equals') {
                 button.addEventListener('click', (e) => operate(`${displayPreviewElement.innerText} ${displayInputElement.innerText}`))
             } else {
-                button.addEventListener('click', (e) => updatePreviewDisplay(`${displayInputElement.innerText} ${e.target.getAttribute('value')}`))
+                button.addEventListener('click', (e) => updatePreviewDisplay(displayInputElement.innerText, e.target.getAttribute('value')))
             }
         } else if(button.classList.contains('action')) {
             if(button.getAttribute('id') === 'clear') {
@@ -44,8 +44,23 @@ function updateInputDisplay(numberToDisplay) {
     displayInputElement.innerText += numberToDisplay;
 }
 
-function updatePreviewDisplay(operationString) {
-    displayPreviewElement.innerText = operationString;
+function updatePreviewDisplay(num1, operation) {
+    let partialPreview = displayPreviewElement.split('');
+    // switch (partialPreview.length) {
+    //     case 0 || 1: //new operation or single number
+    //         break;
+    //     case 2: //'1 +' partial operation, operation can be updated
+    //         break;
+    //     case 3: //'1 + 1' full operation, if operation pressed - chain operation
+    //         break;
+    //     default:
+    //         console.log('Invalid operation');
+    // }
+    if(displayPreviewElement.innerText !== '' && displayInputElement.innerText) {
+        displayPreviewElement.innerText = `${displayInputElement.innerText} ${operation}`;
+    } else {
+        displayPreviewElement.innerText = `${num1} ${operation}`;
+    }
     displayInputElement.innerText = 0;
 }
 
@@ -61,11 +76,10 @@ function deleteFromDisplay() {
     
 }
 
-function operate(operationString) {
-    console.log(operationString);
-    displayPreviewElement.innerText = operationString;
+function operate(partialOperationString) {
+    displayPreviewElement.innerText = partialOperationString;
     
-    let operationArray = operationString.split(' ');
+    let operationArray = partialOperationString.split(' ');
     let num1 = Number.parseInt(operationArray[0]);
     let operation = operationArray[1];
     let num2 = Number.parseInt(operationArray[2]);
