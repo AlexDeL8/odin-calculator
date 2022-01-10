@@ -15,7 +15,7 @@ function addButtonListeners() {
             if(button.getAttribute('id') === 'equals') {
                 button.addEventListener('click', (e) => operate(`${displayPreviewElement.innerText} ${displayInputElement.innerText}`))
             } else {
-                button.addEventListener('click', (e) => updatePreviewDisplay(`${displayInputElement.innerText} ${e.target.getAttribute('value')}`))
+                button.addEventListener('click', (e) => updatePreviewDisplay(displayInputElement.innerText, e.target.getAttribute('value')))
             }
         } else if(button.classList.contains('action')) {
             if(button.getAttribute('id') === 'clear') {
@@ -44,8 +44,12 @@ function updateInputDisplay(numberToDisplay) {
     displayInputElement.innerText += numberToDisplay;
 }
 
-function updatePreviewDisplay(operationString) {
-    displayPreviewElement.innerText = operationString;
+function updatePreviewDisplay(num1, operation) {
+    if(displayPreviewElement.innerText !== '' && displayInputElement.innerText) {
+        displayPreviewElement.innerText = `${displayInputElement.innerText} ${operation}`;
+    } else {
+        displayPreviewElement.innerText = `${num1} ${operation}`;
+    }
     displayInputElement.innerText = 0;
 }
 
@@ -61,11 +65,10 @@ function deleteFromDisplay() {
     
 }
 
-function operate(operationString) {
-    console.log(operationString);
-    displayPreviewElement.innerText = operationString;
+function operate(partialOperationString) {
+    displayPreviewElement.innerText = partialOperationString;
     
-    let operationArray = operationString.split(' ');
+    let operationArray = partialOperationString.split(' ');
     let num1 = Number.parseInt(operationArray[0]);
     let operation = operationArray[1];
     let num2 = Number.parseInt(operationArray[2]);
