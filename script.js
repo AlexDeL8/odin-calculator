@@ -22,7 +22,7 @@ function addButtonListeners() {
                 button.addEventListener('click', (e) => clearDisplay());
             }
             else {
-                console.log('delete');
+                button.addEventListener('click', (e) => deleteFromDisplay());
             }
         }
     }
@@ -55,7 +55,10 @@ function clearDisplay() {
 }
 
 function deleteFromDisplay() {
-    return true;
+    let deletedDisplayInput = displayInputElement.innerText.split('');
+    deletedDisplayInput.pop();
+    deletedDisplayInput.length > 0 ? displayInputElement.innerText = deletedDisplayInput.join('') : displayInputElement.innerText = 0;
+    
 }
 
 function operate(operationString) {
