@@ -88,10 +88,16 @@ function deleteFromDisplay() {
 }
 
 function operate(operationString) {
+    let operationArray = operationString.split(' ');
+    if(operationArray[0] === '') {
+        displayPreviewElement.innerText = displayInputElement.innerText;
+        return;
+    }
     displayPreviewElement.innerText = operationString;
     
-    let operationArray = operationString.split(' ');
-    //Need to handle '!' early on
+    
+    console.log(operationArray)
+    
     if(operationArray[2] === '' && operationArray[1] !== '!') { //if '1 +  =', alert error
         alert('Invalid operation - please try again');
         return;
@@ -120,7 +126,7 @@ function operate(operationString) {
             displayInputElement.innerText = factorial(num1);
             break;
         default:
-            console.log("Invalid operation");
+            return;
     }
 }
 
