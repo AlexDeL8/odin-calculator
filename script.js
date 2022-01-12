@@ -145,7 +145,6 @@ function operate(operationString) {
     }
 }
 
-//TODO: might need to add float functionality in the arithmetic for it to be passed/returned properly
 /* Math functions */
 function add(a, b) {
     return a + b;
