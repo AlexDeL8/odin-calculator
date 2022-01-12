@@ -53,15 +53,16 @@ function updatePreviewDisplay(num1, operation) {
             break;
         case 2: //partial operation
             if(displayInputElement.innerText == '') { //'1 + ', operation can be updated
-                displayPreviewElement.innerText = `${partialPreview[0]} ${operation}`
+                displayPreviewElement.innerText = `${partialPreview[0]} ${operation}`;
             } else {
                 operate(`${displayPreviewElement.innerText} ${num1}`); //'1 + ' WITH next Input number, operation chaining
-                displayPreviewElement.innerText = `${displayInputElement.innerText} ${operation}`
+                displayPreviewElement.innerText = `${displayInputElement.innerText} ${operation}`;
                 displayInputElement.innerText = '';
             }
             break;
         case 3: //'1 + 1' full operation, if operation pressed - chain operation
-            
+            displayPreviewElement.innerText = `${displayInputElement.innerText} ${operation}`;
+            displayInputElement.innerText = '';
             break;
         default:
             console.log('Invalid operation');
