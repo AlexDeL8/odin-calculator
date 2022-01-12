@@ -65,7 +65,8 @@ function updatePreviewDisplay(num1, operation) {
             displayInputElement.innerText = '';
             break;
         default:
-            console.log('Invalid operation');
+            alert('Invalid operation - please try again');
+            return
     }
 }
 
