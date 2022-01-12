@@ -88,17 +88,26 @@ function deleteFromDisplay() {
 }
 
 function operate(operationString) {
-    let operationArray = operationString.split(' ');
-    if(operationArray[0] === '') {
+    let operationArray = operationString.trim().split(' ');
+    //single number entered and repeatedly hitting '=' will result in same single number showing
+    if(Number.isInteger(parseInt(operationArray[1]))) { 
         displayPreviewElement.innerText = displayInputElement.innerText;
         return;
     }
+    //single number entered AFTER a '!' operation and hitting '=' will result in single number showing
+    if(operationArray[1] === '!' && Number.isInteger(parseInt(operationArray[2]))) { 
+        displayPreviewElement.innerText = displayInputElement.innerText;
+        return;
+    }
+    //single number entered AFTER a complete operation and hitting '=' will result in single number showing 
+    if(Number.isInteger(parseInt(operationArray[3]))) { 
+        displayPreviewElement.innerText = displayInputElement.innerText;
+        return;
+    }
+
     displayPreviewElement.innerText = operationString;
-    
-    
-    console.log(operationArray)
-    
-    if(operationArray[2] === '' && operationArray[1] !== '!') { //if '1 +  =', alert error
+        
+    if(operationArray.length === 2 && operationArray[1] !== '!') { //if '1 +  =', alert error
         alert('Invalid operation - please try again');
         return;
     }
