@@ -136,6 +136,7 @@ function operate(operationString) {
             displayInputElement.innerText = factorial(num1);
             break;
         default:
+            alert('Invalid operation - please try again')
             return;
     }
 }
