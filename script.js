@@ -45,23 +45,28 @@ function updateInputDisplay(numberToDisplay) {
 }
 
 function updatePreviewDisplay(num1, operation) {
-    let partialPreview = displayPreviewElement.split('');
-    // switch (partialPreview.length) {
-    //     case 0 || 1: //new operation or single number
-    //         break;
-    //     case 2: //'1 +' partial operation, operation can be updated
-    //         break;
-    //     case 3: //'1 + 1' full operation, if operation pressed - chain operation
-    //         break;
-    //     default:
-    //         console.log('Invalid operation');
-    // }
-    if(displayPreviewElement.innerText !== '' && displayInputElement.innerText) {
-        displayPreviewElement.innerText = `${displayInputElement.innerText} ${operation}`;
-    } else {
-        displayPreviewElement.innerText = `${num1} ${operation}`;
+    let partialPreview = displayPreviewElement.innerText.split(' ');
+    switch (partialPreview.length) {
+        case 0 || 1: //new operation or single number
+            displayPreviewElement.innerText = `${num1} ${operation}`;
+            displayInputElement.innerText = '';
+            break;
+        case 2: //partial operation
+            if(displayInputElement.innerText == '') { //'1 + ', operation can be updated
+                displayPreviewElement.innerText = `${partialPreview[0]} ${operation}`;
+            } else {
+                operate(`${displayPreviewElement.innerText} ${num1}`); //'1 + ' WITH next Input number, operation chaining
+                displayPreviewElement.innerText = `${displayInputElement.innerText} ${operation}`;
+                displayInputElement.innerText = '';
+            }
+            break;
+        case 3: //'1 + 1' full operation, if operation pressed - chain operation
+            displayPreviewElement.innerText = `${displayInputElement.innerText} ${operation}`;
+            displayInputElement.innerText = '';
+            break;
+        default:
+            console.log('Invalid operation');
     }
-    displayInputElement.innerText = 0;
 }
 
 function clearDisplay() {
@@ -72,14 +77,26 @@ function clearDisplay() {
 function deleteFromDisplay() {
     let deletedDisplayInput = displayInputElement.innerText.split('');
     deletedDisplayInput.pop();
-    deletedDisplayInput.length > 0 ? displayInputElement.innerText = deletedDisplayInput.join('') : displayInputElement.innerText = 0;
+    //if '1 +' doesn't allow for 0 default so operation can still be changed
+    if(displayPreviewElement.innerHTML.split(' ').length === 2) { 
+        displayInputElement.innerText = deletedDisplayInput.join('');
+    //else 0 default
+    } else {
+        deletedDisplayInput.length > 0 ? displayInputElement.innerText = deletedDisplayInput.join('') : displayInputElement.innerText = 0;
+    }
     
 }
 
-function operate(partialOperationString) {
-    displayPreviewElement.innerText = partialOperationString;
+function operate(operationString) {
+    displayPreviewElement.innerText = operationString;
     
-    let operationArray = partialOperationString.split(' ');
+    let operationArray = operationString.split(' ');
+    //Need to handle '!' early on
+    if(operationArray[2] === '' && operationArray[1] !== '!') { //if '1 +  =', alert error
+        alert('Invalid operation - please try again');
+        return;
+    }
+
     let num1 = Number.parseInt(operationArray[0]);
     let operation = operationArray[1];
     let num2 = Number.parseInt(operationArray[2]);
@@ -100,7 +117,6 @@ function operate(partialOperationString) {
             displayInputElement.innerText = power(num1, num2);
             break;
         case "!":
-            console.table(operationArray)
             // displayInputElement.innerText = factorial(num1); some special code needs to work so ! only needs 1 number
             break;
         default:
