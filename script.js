@@ -65,7 +65,8 @@ function updatePreviewDisplay(num1, operation) {
             displayInputElement.innerText = '';
             break;
         default:
-            console.log('Invalid operation');
+            alert('Invalid operation - please try again');
+            return
     }
 }
 
@@ -88,11 +89,26 @@ function deleteFromDisplay() {
 }
 
 function operate(operationString) {
+    let operationArray = operationString.trim().split(' ');
+    //single number entered and repeatedly hitting '=' will result in same single number showing
+    if(Number.isInteger(parseInt(operationArray[1]))) { 
+        displayPreviewElement.innerText = displayInputElement.innerText;
+        return;
+    }
+    //single number entered AFTER a '!' operation and hitting '=' will result in single number showing
+    if(operationArray[1] === '!' && Number.isInteger(parseInt(operationArray[2]))) { 
+        displayPreviewElement.innerText = displayInputElement.innerText;
+        return;
+    }
+    //single number entered AFTER a complete operation and hitting '=' will result in single number showing 
+    if(Number.isInteger(parseInt(operationArray[3]))) { 
+        displayPreviewElement.innerText = displayInputElement.innerText;
+        return;
+    }
+
     displayPreviewElement.innerText = operationString;
-    
-    let operationArray = operationString.split(' ');
-    //Need to handle '!' early on
-    if(operationArray[2] === '' && operationArray[1] !== '!') { //if '1 +  =', alert error
+        
+    if(operationArray.length === 2 && operationArray[1] !== '!') { //if '1 +  =', alert error
         alert('Invalid operation - please try again');
         return;
     }
@@ -117,10 +133,11 @@ function operate(operationString) {
             displayInputElement.innerText = power(num1, num2);
             break;
         case "!":
-            // displayInputElement.innerText = factorial(num1); some special code needs to work so ! only needs 1 number
+            displayInputElement.innerText = factorial(num1);
             break;
         default:
-            console.log("Invalid operation");
+            alert('Invalid operation - please try again')
+            return;
     }
 }
 

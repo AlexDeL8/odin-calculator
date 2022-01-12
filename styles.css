@@ -41,13 +41,14 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    overflow-x: scroll;
 }
 
 #display-preview {
     height: 30%;
     font-size: 24px;
     padding-right: 5px;
-    border-bottom: 3px dotted black;
+    border-bottom: 3px dotted grey;
 }
 
 #display-input {
