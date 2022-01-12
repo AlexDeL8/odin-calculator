@@ -117,7 +117,7 @@ function operate(operationString) {
             displayInputElement.innerText = power(num1, num2);
             break;
         case "!":
-            // displayInputElement.innerText = factorial(num1); some special code needs to work so ! only needs 1 number
+            displayInputElement.innerText = factorial(num1);
             break;
         default:
             console.log("Invalid operation");
