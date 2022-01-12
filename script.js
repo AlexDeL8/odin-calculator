@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', addButtonListeners());
 let displayInputElement = document.getElementById('display-input');
 let displayPreviewElement = document.getElementById('display-preview');
 
+let gitIconElement = document.getElementById('git-icon-img')
+gitIconElement.addEventListener('mouseenter', (e) => e.target.src = './imgs/git-icon-active.png');
+gitIconElement.addEventListener('mouseleave', (e) => e.target.src = './imgs/git-icon-inactive.png');
+
 function addButtonListeners() {
     let calculatorButtons = Array.from(document.getElementsByClassName('button'));
 
