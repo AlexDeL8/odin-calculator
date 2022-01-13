@@ -11,13 +11,17 @@ gitIconElement.addEventListener('mouseleave', (e) => e.target.src = './imgs/git-
 
 const validOperations = ['+', '-', '*', '/', '^', '!', '='];
 const validActions = [ 'Backspace', 'Delete', 'Enter'];
-window.addEventListener('keydown', (e) =>{
+window.addEventListener('keydown', (e) => {
     if(Number.isInteger(Number.parseInt(e.key))) {
-        console.log(e.key);
+        updateInputDisplay(e.key);
     } else if(validOperations.includes(e.key)){
-        console.log(e.key);
-    } else if(validActions.includes(e.key)) {
-        console.log(e.key);
+        updatePreviewDisplay(displayInputElement.innerText, e.key)
+    } else if(e.key === 'Delete') {
+        deleteFromDisplay();
+    } else if(e.key === 'Backspace') {
+        clearDisplay();
+    } else if(e.key === 'Enter') {
+        operate(`${displayPreviewElement.innerText} ${displayInputElement.innerText}`);
     }
 });
 
