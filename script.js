@@ -9,6 +9,18 @@ let gitIconElement = document.getElementById('git-icon-img')
 gitIconElement.addEventListener('mouseenter', (e) => e.target.src = './imgs/git-icon-active.png');
 gitIconElement.addEventListener('mouseleave', (e) => e.target.src = './imgs/git-icon-inactive.png');
 
+const validOperations = ['+', '-', '*', '/', '^', '!', '='];
+const validActions = [ 'Backspace', 'Delete', 'Enter'];
+window.addEventListener('keydown', (e) =>{
+    if(Number.isInteger(Number.parseInt(e.key))) {
+        console.log(e.key);
+    } else if(validOperations.includes(e.key)){
+        console.log(e.key);
+    } else if(validActions.includes(e.key)) {
+        console.log(e.key);
+    }
+});
+
 function addButtonListeners() {
     let calculatorButtons = Array.from(document.getElementsByClassName('button'));
 
@@ -17,16 +29,16 @@ function addButtonListeners() {
             button.addEventListener('click', (e) => updateInputDisplay(e.target.getAttribute('value')));
         } else if(button.classList.contains('operation')) {
             if(button.getAttribute('id') === 'equals') {
-                button.addEventListener('click', (e) => operate(`${displayPreviewElement.innerText} ${displayInputElement.innerText}`))
+                button.addEventListener('click', () => operate(`${displayPreviewElement.innerText} ${displayInputElement.innerText}`))
             } else {
                 button.addEventListener('click', (e) => updatePreviewDisplay(displayInputElement.innerText, e.target.getAttribute('value')))
             }
         } else if(button.classList.contains('action')) {
             if(button.getAttribute('id') === 'clear') {
-                button.addEventListener('click', (e) => clearDisplay());
+                button.addEventListener('click', () => clearDisplay());
             }
             else {
-                button.addEventListener('click', (e) => deleteFromDisplay());
+                button.addEventListener('click', () => deleteFromDisplay());
             }
         }
     }
