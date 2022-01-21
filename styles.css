@@ -112,7 +112,7 @@
     background-color: rgb(140, 195, 210);
 }
 
-#footer {
+footer {
     position: fixed;
     text-align: center;
     bottom: 0;
@@ -123,12 +123,12 @@
     border-top: 3px solid green;
 }
 
-#footer > a {
+footer > a {
     color: black;
     font-weight: bold;
 }
 
-#footer > a:hover {
+footer > a:hover {
     color: grey;
     cursor: pointer;
 }
