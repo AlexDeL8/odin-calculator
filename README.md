@@ -30,4 +30,4 @@
 - This project was inspired by and based on the courses provided by [The Odin Project](https://www.theodinproject.com/dashboard)
 
 ## Contact
-Created by Alex De Luca - [@AlexDeL8](https://github.com/AlexDeL8). Feel free to [contact me](mailto:alexnaj88@gmail.com)
+Created by Alex De Luca - [@AlexDeL8](https://github.com/AlexDeL8). Feel free to [contact me](mailto:alexnaj88@gmail.com)📧
