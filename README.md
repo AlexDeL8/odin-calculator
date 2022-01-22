@@ -23,7 +23,7 @@
 - Decimals numbers are able to be input
 - Ability to clear the whole calculator
 - Ability to delete from the current input number
-- Operation chaining (i.e. 1 + 1 = 2 + 1 = 3 +...)
+- Operation chaining (*i.e. 1 + 1 = 2 + 1 = 3 +...*)
 
 ## Room for Improvement
 - Operation/Equation history
