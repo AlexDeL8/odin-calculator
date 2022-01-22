@@ -20,12 +20,14 @@
 ## Features
 - Single operation calculator (rounds to integer for any decimal arithmetic)
 - Possible operations: add, minus, multiply, divide, power/exponent, factorial
+- Keyboard functionality
 - Decimals numbers are able to be input
 - Ability to clear the whole calculator
 - Ability to delete from the current input number
 - Operation chaining (*i.e. 1 + 1 = 2 + 1 = 3 +...*)
 
 ## Room for Improvement
+- Keyboard input legend
 - Operation/Equation history
 - Imrpoved styling
     - Buttons look more 3D
