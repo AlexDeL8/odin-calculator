@@ -1,7 +1,5 @@
 'use strict'
 
-document.addEventListener('DOMContentLoaded', addButtonListeners());
-
 let displayInputElement = document.getElementById('display-input');
 let displayPreviewElement = document.getElementById('display-preview');
 
@@ -25,28 +23,27 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-function addButtonListeners() {
-    let calculatorButtons = Array.from(document.getElementsByClassName('button'));
+let calculatorButtons = Array.from(document.getElementsByClassName('button'));
 
-    for(let button of calculatorButtons) {
-        if(button.classList.contains('number')) {
-            button.addEventListener('click', (e) => updateInputDisplay(e.target.getAttribute('value')));
-        } else if(button.classList.contains('operation')) {
-            if(button.getAttribute('id') === 'equals') {
-                button.addEventListener('click', () => operate(`${displayPreviewElement.innerText} ${displayInputElement.innerText}`))
-            } else {
-                button.addEventListener('click', (e) => updatePreviewDisplay(displayInputElement.innerText, e.target.getAttribute('value')))
-            }
-        } else if(button.classList.contains('action')) {
-            if(button.getAttribute('id') === 'clear') {
-                button.addEventListener('click', () => clearDisplay());
-            }
-            else {
-                button.addEventListener('click', () => deleteFromDisplay());
-            }
+for(let button of calculatorButtons) {
+    if(button.classList.contains('number')) {
+        button.addEventListener('click', (e) => updateInputDisplay(e.target.getAttribute('value')));
+    } else if(button.classList.contains('operation')) {
+        if(button.getAttribute('id') === 'equals') {
+            button.addEventListener('click', () => operate(`${displayPreviewElement.innerText} ${displayInputElement.innerText}`))
+        } else {
+            button.addEventListener('click', (e) => updatePreviewDisplay(displayInputElement.innerText, e.target.getAttribute('value')))
+        }
+    } else if(button.classList.contains('action')) {
+        if(button.getAttribute('id') === 'clear') {
+            button.addEventListener('click', () => clearDisplay());
+        }
+        else {
+            button.addEventListener('click', () => deleteFromDisplay());
         }
     }
 }
+
 
 function updateInputDisplay(numberToDisplay) {
     //checks for decimal input and that only ONE decimal is allowed
