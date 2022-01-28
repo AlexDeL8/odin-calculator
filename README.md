@@ -13,6 +13,7 @@
 ## General Information
 - This is the **Odin Calculator project** to practice what was learned in the **JS Foundations** section of the **Foundations** portion in [The Odin Project](https://www.theodinproject.com/dashboard)
     - The requirements of this project included making a single operation calculator that involved working with JavaScript functions more
+- Visit the project: 🖥️[**Odin Calculator**](https://alexdel8.github.io/odin-calculator/)
 
 ## Technologies Used
 - HTML, CSS, Flexbox, JavaScript
